@@ -60,3 +60,17 @@
   background-color: #f44336; /* Красный */
   color: white;
 }
+
+.shadow {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень для всех элементов */
+}
+.input-container {
+  margin-bottom: 10px;
+}
+
+.input-field {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень для всех элементов */
+}
