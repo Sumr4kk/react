@@ -1,203 +1,188 @@
 import React from 'react';
 import './App.css';
-  
+import { nanoid } from 'nanoid';
+
 function App() {
-  const attr = 'block';
-  const str = <p>text</p>;
-  const str1 = 'text1';
-  const str2 = 'text2';
-  const name1 = 'user';
-  const age = '30';
-  const arr = [1, 2, 3, 4, 5];
-  const obj = { names: 'john', surname: 'smit' };
-  const li1 = <li>text1</li>;
-  const li2 = <li>text2</li>;
-  const li3 = <li>text3</li>;
-  const items = <ul><li>text1</li><li>text2</li><li>text3</li></ul>;
-  const age2 = 19;
-     
-  let text4, text5;
-  const isAdult = false; 
-  	if (isAdult) {
-		text4 = <p>Вы совершеннолетний</p>;
-	}
-    else {
-		text5 = <p>Вы несовершеннолетний</p>;
-	}
-
-  const isAdmin = true;
-  let text_1, text_2;
-  if (isAdmin) {
-		text_1 = <p>yoy are admin</p>;
-	} else {
-		text_2 = <p>you is not admin</p>;
-	}
-
-const isAuth = true;
-const isAuth2 = true;
-
-function getDigitsSum(str){
-  let sum = 0;
-  for (let i = 0; i < str.length; i++){
-    sum += parseInt(str[i])
+  // 34
+	function showNumber(number) {
+    alert(number);
   }
-   return sum;
+// 35
+  function handleClick(event) {
+    console.log(event); 
+  }  
+  function handleClick1(event) {
+    console.log(event.target); // выводит элемент, на который был совершен клик
+  }
+// 36 // 1
+function func(event) {
+  console.log(event);
+}
+//2
+function func1(arg, event) {
+  console.log(arg, event);
+}
+//3
+function func2(event, arg) {
+  console.log(event, arg);
+}
+//4
+function func3(arg1, event, arg2) {
+  console.log(arg1, event, arg2);
+}
+//37
+const arr = [
+  <li>1</li>,
+  <li>2</li>,
+  <li>3</li>,
+  <li>4</li>,
+  <li>5</li>,
+];
+
+//38
+
+const arr1 = [];
+  
+for (let i = 1; i <= 5; i++) {
+  arr1.push(<li>{i}</li>);
 }
 
-const sum = getDigitsSum("123")
+//39
 
-function show1() {
-  alert(1);
+const arr2 = ['a', 'b', 'c', 'd', 'e'];
+  
+const res = arr2.map(function(item) {
+  return <li>{item}</li>;
+});
+
+//40
+
+const res1 = arr2.map(function(item, index) {
+  return <li key={index}>{item}</li>;
+});
+
+
+//41
+
+const users = [
+  {name: 'user1', surn: 'surn1', age: 30},
+  {name: 'user2', surn: 'surn2', age: 31},
+  {name: 'user3', surn: 'surn3', age: 32},
+];
+const listItems = users.map(function(user, index) {
+  return (
+    <li key={index}>
+      <span>{user.name}</span>, 
+      <span>{user.surn}</span>, 
+      <span>{user.age}</span> years old
+    </li>
+  );
+});
+
+//42
+
+const listItems1 = users.map(function(user) {
+  return (
+    <li key={user.id}>
+      <span>{user.name}</span>, 
+      <span>{user.surn}</span>, 
+      <span>{user.age}</span> years old
+    </li>
+  );
+});
+
+//43
+const rows = users.map(function(user) {
+  return (
+    <tr key={user.id}>
+      <td>{user.name}</td>
+      <td>{user.surn}</td>
+      <td>{user.age}</td>
+    </tr>
+  );
+});
+
+//47
+const randomId = nanoid(); // Генерация случайного ID
+//48
+function id() {
+  return nanoid();
 }
 
-function show2() {
-  alert(2);
-}
+//49
+const users3 = [
+  { id: id(), name: 'User1', age: 25 },
+  { id: id(), name: 'User2', age: 30 },
+  { id: id(), name: 'User3', age: 22 },
+];
 
+console.log(users3);
 
   return (
-    <div className={attr}>
-      <h2>1-12 TASKS</h2>
-      <ul>
-        <li>I’m beginning to feel like a Rap God, Rap God</li>
-        <li>All my people from the front to the back nod, back nod</li>
-        <li>Now who thinks their arms are long enough to slapbox, slapbox?</li>
-        <li>They said I rap like a robot, so call me Rapbot</li>
-        {/* Повторяющиеся элементы можно вынести в отдельный компонент */}
-      </ul>
+    <div>
+<h2>34#1</h2>
+<button onClick={() => showNumber(1)}>act1</button>
+<button onClick={() => showNumber(2)}>act2</button>
+<button onClick={() => showNumber(3)}>act3</button>
+<h2>35#1</h2>
+<button onClick={handleClick}>Кликни меня</button>
+<h2>35#2</h2>
+<button onClick={handleClick1}>Кликни меня</button>
+<h2>36#1</h2>
+<button onClick={() => func('eee')}>act</button>
+<h2>36#2</h2>
+<button onClick={event => func1('eee', event)}>act</button>
+<h2>36#3</h2>
+<button onClick={event => func2(event, 'eee')}>act</button>
+<h2>36#4</h2>
+<button onClick={event => func3('firstArg', event, 'thirdArg')}>act</button>
+<h2>37#1</h2>
+<ul>{arr}</ul>
 
-      <ul>
-        <li>text1</li>
-        <li>text2</li>
-        <li>text3</li>
-      </ul>
+<h2>38#1</h2>
+<ul>{arr1}</ul>
 
-      <ul>
-        <li>text1</li>
-        <li>text2</li>
-        <li>text3</li>
-      </ul>
+<h2>39#1</h2>
+<ul>{res}</ul>
 
-      <p>Через return можно возвращать несколько тегов если они будут внутри конструкции &lt;&gt;&lt;/&gt;</p>
+<h2>40#1</h2>
+<ul>{res1}</ul>
 
-      <h2>13#1</h2>
-      <p>{str1}</p>
-      <p>{str2}</p>
+<h2>41#1</h2>
+<ul>{listItems}</ul>
 
-      <h2>14#1</h2>
-      <p>name: {name1}</p>
-      <p>age: {age}</p>
+<h2>42#1</h2>
+<ul>{listItems1}</ul>
 
-      <h2>15#1</h2>
-<ul>
-  <li>{arr[0]}</li>
-  <li>{arr[1]}</li>
-  <li>{arr[2]}</li>
-  <li>{arr[3]}</li>
-  <li>{arr[4]}</li>
-</ul>
-
-      <h2>16#1</h2>
-      <p>
-        name: <span>{obj.names}</span> <br />
-        surname: <span>{obj.surname}</span>
-      </p>
-
-      <h2>18#1</h2>
-      <p>{str}</p>
-      <h2>19#1</h2> 
-	  <ul>
-	{li1}
-	{li2}
-	{li3}
-     </ul>
-	 <h2>20#1</h2>
-		{items}
-	<h2>21#1</h2>
-<p>Константы с тегами можно возвращать через return к примеру return str</p>
-<h2>22#1</h2>
-<input/><br/> 
-<h2>23#1</h2>
-<ul>
-				<li>Элемент 1</li>
-				<li>Элемент 2</li>
-				<li>Элемент 3</li>
-				<li>Элемент 4</li>
-				<li>Элемент 5</li>
-				<li>Элемент 6</li>
-				<li>Элемент 7</li>
-				<li>Элемент 8</li>
-				<li>Элемент 9</li>
-				<li>Элемент 10</li>
-			</ul>
-<h2>23#2</h2>
+<h2>43#1</h2>
 <table>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-					</tr>
-				</tbody>
-			</table>
+      <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Возраст</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows}
+      </tbody>
+    </table>
 
-<h2>24#1</h2>
-
-<p>result: 9</p>
-<p>result: john smit</p>
-<p>result: 2</p>
-
-<h2>26#1</h2>
-{text5}
-
-<h2>27#1</h2>
-{text_1}
-<h2>28#1</h2>
-{age2 > 18 ? 'Есть 18' : 'Нет 18-ти'}
-<h2>29#1</h2>
-{isAuth && <p>вы авторизованы</p>}
-<h2>30#1</h2>
-{!isAuth2 && <p>вы авторизованы</p>}
-<p>Условие False(если не авторизован !isAuth2)</p>
-
-<h2>31#1</h2>
-<p>Сумма цифр числа 123 равна {sum} </p>
-
-<h2>32#1</h2>
-<p>Сумма цифр числа 12345 = {getDigitsSum("12345")}</p>
-
-<h2>33#1</h2>
-<div>
-      <button onClick={show1}>show1</button>
-      <button onClick={show2}>show2</button>
+<h2>47#1</h2>
+    <div>
+      <p>Сгенерированный ID с помощью nanoid: {randomId}</p>
     </div>
+  
+<h2>48#1</h2>
+Функция для генерации id: {id()}
 
-
-
-      {/* Примеры использования пустых тегов */}
-      {/* 
-      11. Можно возвращать тег, который не нужно закрывать вот так: 
-      function App() {
-        return <input />;
-      } 
-      
-      12. Возвращение пустого тега делаем так 
-      function App() {
-        return <div />;
-      }
-      */}
+<h2>49#1</h2>
+Смотри консоль.
+console.log(users);
+ 
     </div>
   );
 }
+
 
 export default App;
