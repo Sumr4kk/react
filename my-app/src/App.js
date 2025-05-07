@@ -1,133 +1,105 @@
 import React, { useState } from 'react';
+import NewApp from './AppTask76'
+import AppTask77 from './AppTask77'
+
+const initNotes = [
+  {
+    id: 'GYi9G_uC4gBF1e2SixDvu',
+    prop1: 'value11',
+    prop2: 'value12',
+    prop3: 'value13',
+  },
+  {
+    id: 'IWSpfBPSV3SXgRF87uO74',
+    prop1: 'value21',
+    prop2: 'value22',
+    prop3: 'value23',
+  },
+  {
+    id: 'JAmjRlfQT8rLTm5tG2m1L',
+    prop1: 'value31',
+    prop2: 'value32',
+    prop3: 'value33',
+  },
+];
 
 function App() {
-  //66
-  const [value, setValue] = useState('');
-
-//67
-
-const [language, setLanguage] = useState('');
-
-  const changeHandler = (event) => {
-    setLanguage(event.target.value);
+  const [notes, setNotes] = useState(initNotes);
+  const [inputValues, setInputValues] = useState({ prop1: '', prop2: '', prop3: '' });
+  
+  // Функция для добавления нового элемента
+  const addNote = () => {
+    const newNote = {
+      id: Math.random().toString(36).substring(7), // Генерация случайного ID
+      prop1: inputValues.prop1,
+      prop2: inputValues.prop2,
+      prop3: inputValues.prop3,
+    };
+    setNotes([...notes, newNote]);
+    setInputValues({ prop1: '', prop2: '', prop3: '' }); // Очистка инпутов
   };
 
-//69
-const [value1, setValue1] = useState('text');
-const [checked, setChecked] = useState(true);
+  // Функция для удаления элемента
+  const removeNote = (id) => {
+    setNotes(notes.filter(note => note.id !== id));
+  };
 
-//70
+  // Функция для изменения элемента
+  const updateNote = (id, index) => {
+    const updatedNotes = notes.map(note => 
+      note.id === id ? { ...note, prop1: note.prop1 + '!' } : note
+    );
+    setNotes(updatedNotes);
+  };
 
-const initDate = {
-  year: 2025,
-  month: 12,
-  day: 31,
-};
-
-const [date, setDate] = useState(initDate);
-
-const handleChange = (field, event) => {
-  const newValue = Number(event.target.value);
-  setDate({
-    ...date,
-    [field]: newValue,
-  });
-};
-
-const getDayOfWeek = () => {
-  const dateObj = new Date(date.year, date.month - 1, date.day); // месяц в JavaScript начинается с 0
-  const options = { weekday: 'long' }; // форматируем день недели
-  return dateObj.toLocaleDateString('ru-RU', options);
-};
-
-
+  // Функция для переворота массива
+  const reverseNotes = () => {
+    setNotes([...notes].reverse());
+  };
 
   return (
-
     <div>
-    <h2>66#1</h2>
-    <select value={value} onChange={(event) => setValue(event.target.value)}>
-        <option value="">Выберите возрастную группу</option>
-        <option value="0-12">От 0 до 12 лет</option>
-        <option value="13-17">От 13 до 17 лет</option>
-        <option value="18-25">От 18 до 25 лет</option>
-        <option value="25+">Старше 25 лет</option>
-      </select>
-      <p>
-        {value === '0-12' && 'Вы выбрали возрастную группу: от 0 до 12 лет'}
-        {value === '13-17' && 'Вы выбрали возрастную группу: от 13 до 17 лет'}
-        {value === '18-25' && 'Вы выбрали возрастную группу: от 18 до 25 лет'}
-        {value === '25+' && 'Вы выбрали возрастную группу: старше 25 лет'}
-      </p>
-
-    <h2>68#1</h2>
-    <h3>Выберите ваш любимый язык программирования:</h3>
-      <input
-        type="radio"
-        name="language"
-        value="JavaScript"
-        checked={language === 'JavaScript'}
-        onChange={changeHandler}
+      <h1>TASK#73</h1>
+      <ul>
+        {notes.map((note, index) => (
+          <li key={note.id}>
+            <span onClick={() => updateNote(note.id, index)}>{note.prop1}</span>
+            <span>{note.prop2}</span>
+            <span>{note.prop3}</span>
+            <button onClick={() => removeNote(note.id)}>Удалить</button>
+          </li>
+        ))}
+      </ul>
+      <h1>TASK#74</h1>
+      {/* Инпуты для добавления нового элемента */}
+      <input 
+        type="text" 
+        placeholder="Prop1" 
+        value={inputValues.prop1} 
+        onChange={(e) => setInputValues({...inputValues, prop1: e.target.value})} 
       />
-      JavaScript
-      <br />
-      <input
-        type="radio"
-        name="language"
-        value="Python"
-        checked={language === 'Python'}
-        onChange={changeHandler}
+      <input 
+        type="text" 
+        placeholder="Prop2" 
+        value={inputValues.prop2} 
+        onChange={(e) => setInputValues({...inputValues, prop2: e.target.value})} 
       />
-      Python
-      <br />
-      <input
-        type="radio"
-        name="language"
-        value="Java"
-        checked={language === 'Java'}
-        onChange={changeHandler}
+      <input 
+        type="text" 
+        placeholder="Prop3" 
+        value={inputValues.prop3} 
+        onChange={(e) => setInputValues({...inputValues, prop3: e.target.value})} 
       />
-      Java
-      <br />
-      <p>
-        Вы выбрали: {language}
-      </p>
-      {language === 'JavaScript' && <p>Отличный выбор, JavaScript - это классно!</p>}
-    
-
-    <h2>69#1</h2>
-    <input defaultValue={value1} />
-    <input type="checkbox" defaultChecked={checked} />
-
-    <h2>71#1</h2>
-    <p>Год: {date.year}, Месяц: {date.month}, День: {date.day}, День недели: {getDayOfWeek()}</p>
+      <h1>TASK#75</h1>
+      <button onClick={addNote}>Добавить элемент</button>
       
-      <h3>Редактировать дату:</h3>
-      <input 
-        type="number" 
-        value={date.year} 
-        onChange={(e) => handleChange('year', e)} 
-        placeholder="Год"
-      />
-      <input 
-        type="number" 
-        value={date.month} 
-        onChange={(e) => handleChange('month', e)} 
-        placeholder="Месяц"
-      />
-      <input 
-        type="number" 
-        value={date.day} 
-        onChange={(e) => handleChange('day', e)} 
-        placeholder="День"
-      />
-
-
-    <h2>72#1</h2>
-Да
+      {/* Кнопка для переворота списка */}
+      <button onClick={reverseNotes}>Перевернуть список</button>
+      <h1>TASK#76</h1>
+      <NewApp/>
+      <h1>TASK#77</h1>
+      <AppTask77/>
     </div>
-       
-    
   );
 }
 
