@@ -13,16 +13,28 @@ function App() {
   const li2 = <li>text2</li>;
   const li3 = <li>text3</li>;
   const items = <ul><li>text1</li><li>text2</li><li>text3</li></ul>;
-  
+  const age2 = 19;
 
   let text4, text5;
   const isAdult = false; 
   	if (isAdult) {
 		text4 = <p>Вы совершеннолетний</p>;
 	}
-  if (isAdult == false) {
+    else {
 		text5 = <p>Вы несовершеннолетний</p>;
 	}
+
+  const isAdmin = true;
+  let text_1, text_2;
+  if (isAdmin) {
+		text_1 = <p>yoy are admin</p>;
+	} else {
+		text_2 = <p>you is not admin</p>;
+	}
+
+const isAuth = true;
+const isAuth2 = true;
+
   return (
     <div className={attr}>
       <ul>
@@ -128,9 +140,14 @@ function App() {
 {text5}
 
 <h2>27#1</h2>
+{text_1}
 <h2>28#1</h2>
+{age2 > 18 ? 'Есть 18' : 'Нет 18-ти'}
 <h2>29#1</h2>
+{isAuth && <p>вы авторизованы</p>}
 <h2>30#1</h2>
+{!isAuth2 && <p>вы авторизованы</p>}
+
 <h2>31#1</h2>
 <h2>32#1</h2>
 <h2>33#1</h2>
