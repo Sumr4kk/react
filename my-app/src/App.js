@@ -1,5 +1,6 @@
 import React from 'react';
-
+import './App.css';
+  
 function App() {
   const attr = 'block';
   const str = <p>text</p>;
@@ -14,7 +15,7 @@ function App() {
   const li3 = <li>text3</li>;
   const items = <ul><li>text1</li><li>text2</li><li>text3</li></ul>;
   const age2 = 19;
-
+     
   let text4, text5;
   const isAdult = false; 
   	if (isAdult) {
@@ -35,8 +36,28 @@ function App() {
 const isAuth = true;
 const isAuth2 = true;
 
+function getDigitsSum(str){
+  let sum = 0;
+  for (let i = 0; i < str.length; i++){
+    sum += parseInt(str[i])
+  }
+   return sum;
+}
+
+const sum = getDigitsSum("123")
+
+function show1() {
+  alert(1);
+}
+
+function show2() {
+  alert(2);
+}
+
+
   return (
     <div className={attr}>
+      <h2>1-12 TASKS</h2>
       <ul>
         <li>I’m beginning to feel like a Rap God, Rap God</li>
         <li>All my people from the front to the back nod, back nod</li>
@@ -147,77 +168,19 @@ const isAuth2 = true;
 {isAuth && <p>вы авторизованы</p>}
 <h2>30#1</h2>
 {!isAuth2 && <p>вы авторизованы</p>}
+<p>Условие False(если не авторизован !isAuth2)</p>
 
 <h2>31#1</h2>
+<p>Сумма цифр числа 123 равна {sum} </p>
+
 <h2>32#1</h2>
+<p>Сумма цифр числа 12345 = {getDigitsSum("12345")}</p>
+
 <h2>33#1</h2>
-<h2>34#1</h2>
-<h2>35#1</h2>
-<h2>36#1</h2>
-<h2>37#1</h2>
-<h2>38#1</h2>
-<h2>39#1</h2>
-<h2>40#1</h2>
-<h2>41#1</h2>
-<h2>42#1</h2>
-<h2>43#1</h2>
-<h2>44#1</h2>
-<h2>45#1</h2>
-<h2>46#1</h2>
-<h2>47#1</h2>
-<h2>48#1</h2>
-<h2>49#1</h2>
-<h2>50#1</h2>
-<h2>51#1</h2>
-<h2>52#1</h2>
-<h2>53#1</h2>
-<h2>54#1</h2>
-<h2>55#1</h2>
-<h2>56#1</h2>
-<h2>57#1</h2>
-<h2>58#1</h2>
-<h2>59#1</h2>
-<h2>60#1</h2>
-<h2>61#1</h2>
-<h2>62#1</h2>
-<h2>63#1</h2>
-<h2>64#1</h2>
-<h2>65#1</h2>
-<h2>66#1</h2>
-<h2>67#1</h2>
-<h2>68#1</h2>
-<h2>69#1</h2>
-<h2>70#1</h2>
-<h2>71#1</h2>
-<h2>72#1</h2>
-<h2>73#1</h2>
-<h2>74#1</h2>
-<h2>75#1</h2>
-<h2>76#1</h2>
-<h2>77#1</h2>
-<h2>78#1</h2>
-<h2>79#1</h2>
-<h2>80#1</h2>
-<h2>81#1</h2>
-<h2>82#1</h2>
-<h2>83#1</h2>
-<h2>84#1</h2>
-<h2>85#1</h2>
-<h2>86#1</h2>
-<h2>87#1</h2>
-<h2>88#1</h2>
-<h2>89#1</h2>
-<h2>90#1</h2>
-<h2>91#1</h2>
-<h2>92#1</h2>
-<h2>93#1</h2>
-<h2>94#1</h2>
-<h2>95#1</h2>
-<h2>96#1</h2>
-<h2>97#1</h2>
-<h2>98#1</h2>
-<h2>99#1</h2>
-<h2>100#1</h2>
+<div>
+      <button onClick={show1}>show1</button>
+      <button onClick={show2}>show2</button>
+    </div>
 
 
 
