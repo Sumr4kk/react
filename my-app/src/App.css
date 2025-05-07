@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  display: flex;
+  gap: 10px; /* Расстояние между кнопками */
+  justify-content: center; /* Центрирование кнопок */
+  padding: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button.primary {
+  background-color: #4CAF50; /* Зеленый */
+  color: white;
+}
+
+.button.secondary {
+  background-color: #f44336; /* Красный */
+  color: white;
+}

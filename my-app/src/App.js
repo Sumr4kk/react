@@ -1,133 +1,111 @@
 import React, { useState } from 'react';
-import AppTask79 from './App_77-90/AppTask79'
-import AppTask80 from './App_77-90/AppTask80'
-import AppTask81 from './App_77-90/AppTask81'
-import Product from './App_77-90/AppTask82'
-import User from './App_77-90/AppTask83'
-import Users from './App_77-90/AppTask85'
-import User4 from './App_77-90/AppTask87'
-import User5 from './App_77-90/AppTask88'
-import Users1 from './App_77-90/AppTask89'
-import UserField from './App_77-90/AppTask90'
+import Calculator from './App_90-99/App95'
+import './App.css'
 
 function App() {
-//82
-  const name1 = 'product1';
-  const cost1 = '100';
-  
-  const name2 = 'product2';
-  const cost2 = '200';
-  
-  const name3 = 'product3';
-  const cost3 = '300';
+  //96
+  const [fahrenheit, setFahrenheit] = useState(32);
 
+  const celsius = ((fahrenheit - 32) * 5) / 9;
 
-  //83
-  const users = [
-    { id: 1, name: 'user1', surn: 'surn1', age: 30 },
-    { id: 2, name: 'user2', surn: 'surn2', age: 31 },
-    { id: 3, name: 'user3', surn: 'surn3', age: 32 },
-];
+  const handleFahrenheitChange = (event) => {
+    setFahrenheit(parseFloat(event.target.value));
+  };
 
-
-//84
-const result = users.map(user => {
-  return (
-      <User key={user.id} name={user.name} surn={user.surn} age={user.age} />
-  );
-});
-
-//86
+  const handleCelsiusChange = (event) => {
+    setFahrenheit(((parseFloat(event.target.value) * 9) / 5) + 32);
+  };
 
 
   return (
     <div>
-      <h1>TASK#79</h1>
-      <AppTask79/>
-      <h1>TASK#80</h1>
-      <AppTask80/>
-      <h1>TASK#81</h1>
-      <AppTask81/>
-      <h1>TASK#82</h1>
-      <Product name={name1} cost={cost1} />
-      <Product name={name2} cost={cost2} />
-      <Product name={name3} cost={cost3} />     
+      <h1>TASK#92</h1>
+      <div>
+        <p>• isEdit: Стейт</p>
+         <p> • elem: Переменная</p>  
+          <p>• data: Стейт или Пропс (в зависимости от контекста использования)</p>  </div>
+      <h1>TASK#93</h1>
       
-      <h1>TASK#83</h1>
-      <table>
-            <thead>
-                <tr>
-                    <th>Имя</th>
-                    <th>Фамилия</th>
-                    <th>Возраст</th>
-                </tr>
-            </thead>
-            <tbody>
-                <User name={users[0].name} surn={users[0].surn} age={users[0].age} />
-                <User name={users[1].name} surn={users[1].surn} age={users[1].age} />
-                <User name={users[2].name} surn={users[2].surn} age={users[2].age} />
-            </tbody>
-        </table>
-      <h1>TASK#84</h1>
-      <table>
-            <thead>
-                <tr>
-                    <th>Имя</th>
-                    <th>Фамилия</th>
-                    <th>Возраст</th>
-                </tr>
-            </thead>
-            <tbody>
-                {result}
-            </tbody>
-        </table>
+1. Products:
 
-      <h1>TASK#85</h1>
+<p></p> • Тип: Компонент-контейнер.
 
-      <Users/>
-      <h1>TASK#86</h1>
-      <Users/>
-      <button>Забанить</button>
-      
-      <h1>TASK#87</h1>
-      <User4/>
-      <table>
-            <thead>
-                <tr>
-                    <th>Имя</th>
-                    <th>Фамилия</th>
-                    <th>Возраст</th>
-                </tr>
-            </thead>
-            <tbody>
-                {result}
-            </tbody>
-        </table>
+<p></p> • Обоснование: Этот компонент, скорее всего, управляет состоянием списка продуктов (например, загружает данные из API или хранит их в стейте) и передает эти данные дочерним компонентам (например, Product).
 
-      <h1>TASK#88</h1>
-      <table>
-            <thead>
-                <tr>
-                    <th>Имя</th>
-                    <th>Фамилия</th>
-                    <th>Возраст</th>
-                </tr>
-            </thead>
-            <tbody>
-                {result}
-            </tbody>
-        </table>
+<p></p> 2. Product:
 
-      <User5/>
-      
-      <h1>TASK#89</h1>
-      
-      <Users1/>
-      
-      <h1>TASK#90</h1>
-      
-      <UserField/>
+<p></p> • Тип: Презентационный компонент.
 
+<p></p> • Обоснование: Этот компонент, скорее всего, отвечает за отображение информации о конкретном продукте, получая данные через пропсы от родительского компонента (Products). Он не управляет состоянием данных.
+
+<p></p> 3. ProductField:
+
+<p></p> • Тип: Презентационный компонент.
+
+<p></p> • Обоснование: Этот компонент, вероятно, отвечает за отображение конкретного поля продукта (например, название, цена и т.д.) и также получает данные через пропсы. Как и Product, он не управляет состоянием данных.
+    
+<h1>TASK#94</h1>
+<h1>Объяснение потока данных в компонентах</h1>
+            <h2>Компоненты:</h2>
+            <ul>
+                <li><strong>Products</strong>: Родительский компонент, который хранит состояние списка продуктов.</li>
+                <li><strong>Product</strong>: Компонент-потомок, который отображает информацию о конкретном продукте и управляет его состоянием.</li>
+                <li><strong>ProductField</strong>: Компонент, который отвечает за отображение полей ввода для имени и цены продукта.</li>
+            </ul>
+
+            <h2>Нисходящий поток данных (Top-Down)</h2>
+            <p>
+                Данные передаются от родительского компонента <strong>Products</strong> к дочерним компонентам:
+            </p>
+            <ol>
+                <li>
+                    Компонент <strong>Products</strong> создает массив продуктов и хранит его в своем состоянии.
+                </li>
+                <li>
+                    Для каждого продукта в массиве <strong>Products</strong> рендерится компонент <strong>Product</strong>, которому передаются данные о продукте через пропсы.
+                </li>
+                <li>
+                    Компонент <strong>Product</strong> получает данные о продукте (например, имя и цену) и передает их дальше в компонент <strong>ProductField</strong> для отображения.
+                </li>
+            </ol>
+
+            <h2>Восходящий поток данных (Bottom-Up)</h2>
+            <p>
+                Данные также могут возвращаться от дочерних компонентов к родительским:
+            </p>
+            <ol>
+                <li>
+                    Когда пользователь вводит данные в поле <strong>ProductField</strong>, вызывается функция, переданная через пропсы из компонента <strong>Product</strong>.
+                </li>
+                <li>
+                    Эта функция обновляет локальное состояние компонента <strong>Product</strong>, а затем вызывает функцию <strong>onUpdate</strong>, переданную из компонента <strong>Products</strong>, чтобы обновить список продуктов.
+                </li>
+                <li>
+                    В результате изменения состояния в родительском компоненте <strong>Products</strong>, все дочерние компоненты автоматически перерисовываются с новыми данными.
+                </li>
+            </ol>
+
+            <h1>TASK#95</h1>
+          <Calculator/>
+          <h1>TASK#96</h1>
+          <div>
+        <label>
+          Fahrenheit:
+          <input type="number" value={fahrenheit} onChange={handleFahrenheitChange} />
+        </label>
+      </div>
+      <div>
+        <label>
+          Celsius:
+          <input type="number" value={celsius} onChange={handleCelsiusChange} />
+        </label>
+      </div>
+
+      <h1>TASK#98</h1>
+      <div className="container">
+      <button className="button primary">Кнопка 1</button>
+      <button className="button secondary">Кнопка 2</button>
+    </div>
     </div>
   );
 }
